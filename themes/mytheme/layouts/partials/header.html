@@ -1,6 +1,53 @@
-<nav>
-  <a href="/">Home</a>
-  <a href="/posts">Posts</a>
-  <a href="/tags">Tags</a>
-</nav>
+  <header>
+    <div class="mobile-bar">
+      <a class="mobile-brand" href="Index.html">
+        <img src="skut logo_2.png" alt="SKUT" class="logo-img">
+      </a>
+      <div class="mobile-actions">
+        <button class="mobile-icon-button mobile-search-toggle" type="button" aria-expanded="false">
+          <span class="sr-only">Zoeken</span>
+          <span class="icon-search" aria-hidden="true"></span>
+        </button>
+        <button class="mobile-icon-button mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="header-menus">
+          <span class="sr-only">Menu</span>
+          <span class="hamburger" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-search-row">
+      <form class="mobile-search-form" role="search" aria-label="Zoeken op SKUT" data-search-form>
+        <label class="sr-only" for="mobile-site-search">Zoek</label>
+        <div class="search-input-group">
+          <input id="mobile-site-search" name="q" type="search" placeholder="Zoek in SKUT" autocomplete="off" data-search-input data-search-source="mobile" />
+          <!-- <button type="submit" class="search-submit">Zoek</button> -->
+        </div>
+      </form>
+    </div>
+    <div class="menus" id="header-menus" role="navigation" aria-label="Hoofdmenu gesplitst">
+      <nav class="menu-left">
+        <div class="menu" aria-label="Links menu">
+          <a class="menu-home" href="Index.html">
+            <img src="https://byobfair.xyz/SKUT/skut%20logo_2.png" alt="SKUT" class="logo-img">
+          </a>
+          <a href="#" data-pane="left" data-target="reeksen">REEKSEN</a>
+          <a href="#" data-pane="left" data-target="genres">GENRES</a>
+          <a href="#" data-pane="left" data-target="auteurs">AUTEURS</a>
+          <a class="menu-search" href="#" data-pane="left" data-target="zoeken">ZOEKEN</a>
+          <a href="#" data-pane="left" data-target="aA">aA</a>
+          <a class="mobile-only" href="#" data-pane="right" data-target="over">Over SKUT</a>
+          <a class="mobile-only" href="#" data-pane="right" data-target="steun">Steun ons (ANBI)</a>
+        </div>
+      </nav>
+      <nav class="menu-right">
+        <div class="menu" aria-label="Rechts menu">
+          <a href="#" data-pane="right" data-target="over">Over SKUT</a>
+          <a href="#" data-pane="right" data-target="steun">Steun ons (ANBI)</a>
+        </div>
+      </nav>
+    </div>
+  </header>
 
