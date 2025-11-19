@@ -1,0 +1,9 @@
+{{ define "main" }}
+<h2>{{ .Title }}</h2>
+<p>{{ time.Format "Januari 2, 2006" .PublishDate }}</p>
+{{ if .Params.Tags }}
+{{ partial "tags.html" . }}
+{{ end }}
+<div>{{ .Content }}</div>
+{{ end }}
+
