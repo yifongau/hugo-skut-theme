@@ -9,18 +9,25 @@
     <lastBuildDate>Mon, 03 Nov 2025 13:24:44 +0100</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/foo/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Second</title>
+      <title>Second Jantje</title>
+      <link>http://localhost:1313/posts/fourth/</link>
+      <pubDate>Mon, 03 Nov 2025 13:24:44 +0100</pubDate>
+      <guid>http://localhost:1313/posts/fourth/</guid>
+      <description>&lt;!-- raw HTML omitted --&gt;</description>
+    </item>
+    <item>
+      <title>Second Martinus</title>
       <link>http://localhost:1313/posts/second/</link>
       <pubDate>Mon, 03 Nov 2025 13:24:44 +0100</pubDate>
       <guid>http://localhost:1313/posts/second/</guid>
-      <description>&lt;p&gt;Dit is de tweede tekst, genaamd second.md&lt;/p&gt;</description>
+      <description>&lt;!-- raw HTML omitted --&gt;</description>
     </item>
     <item>
-      <title>First</title>
+      <title>First Jantje</title>
       <link>http://localhost:1313/posts/first/</link>
       <pubDate>Sun, 05 Oct 2025 10:24:44 +0100</pubDate>
       <guid>http://localhost:1313/posts/first/</guid>
-      <description>&lt;p&gt;Dit is de eerste tekst, genaamd first.md&lt;/p&gt;</description>
+      <description>&lt;p&gt;Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.&lt;/p&gt;&#xA;&lt;p&gt;Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
