@@ -1,4 +1,22 @@
 {{ define "main" }}
-Dit is de homepagina
+
+<!DOCTYPE html>
+<html lang="nl">
+<body>
+  {{- partial "navigation.html" . -}}
+
+	<main class="wrap">
+		<div class="grid" id="grid"> 
+		  {{- partial "column-left.html" . -}}
+		  {{- partial "column-middle.html" . -}}
+		  {{- partial "column-right.html" . -}}
+		</div>
+	  </main>
+</body>
+</html>
+
+
+
+
 {{ end }}
 
