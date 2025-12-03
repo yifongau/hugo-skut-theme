@@ -1,0 +1,65 @@
+
+      <section class="col left" id="left-col">
+	  {{ range $name, $taxonomy := .Site.Taxonomies }}
+	  <div class="pane" id="left-{{ $name }}">
+          <div class="block-links">
+	  {{ range $key, $value := $taxonomy }}
+	  <a href="#">{{ $key }}</a><br><br>
+		  {{ end }}
+
+        </div></div>
+
+	  {{ end }}
+
+
+
+        <!-- Zoeken -->
+
+        <div class="pane" id="left-zoeken">
+
+            <div class="block-links">
+            <h3>Zoeken</h3><br>
+            <form class="search-form" role="search" aria-label="Zoeken in artikelen" data-search-form>
+              <label class="sr-only" for="pane-site-search">Zoeken</label>
+          <div class="search-input-group">
+            <input id="pane-site-search" name="q" type="search" placeholder="Zoek in SKUT" autocomplete="off" data-search-input data-search-source="pane" />
+            <!-- <button type="submit" class="search-submit">Zoek</button> -->
+          </div>
+        </form>
+      
+
+        </div></div>
+
+        <!-- Toegankelijkheid -->
+        <div class="pane" id="left-aA">
+
+            <div class="block-links">
+            <h3>aA</h3><br>
+
+            <div class="accessibility-controls" role="group" aria-label="Toegankelijkheidsopties">
+              <div class="control-row">
+                <span class="control-label">Contrast</span>
+                <button type="button" class="control-button contrast-toggle" data-action="toggle-contrast" aria-pressed="false">
+                  Donker thema
+                </button>
+              </div>
+              <div class="control-row">
+                <span class="control-label">Tekstgrootte</span>
+                <div class="font-size-controls" role="group" aria-label="Tekstgrootte">
+                  <button type="button" class="control-button font-decrease" data-action="font-decrease" aria-label="Verklein tekst">
+                    A-
+                  </button>
+                  <button type="button" class="control-button font-reset" data-action="font-reset" aria-label="Herstel tekstgrootte">
+                    A
+                  </button>
+                  <button type="button" class="control-button font-increase" data-action="font-increase" aria-label="Vergroot tekst">
+                    A+
+                  </button>
+                </div>
+              </div>
+            </div>
+
+        </div>
+
+      </div>
+      </section>

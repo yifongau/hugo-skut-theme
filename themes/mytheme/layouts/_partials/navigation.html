@@ -33,9 +33,12 @@
           <a class="menu-home" href="Index.html">
             <img src="https://byobfair.xyz/SKUT/skut%20logo_2.png" alt="SKUT" class="logo-img">
           </a>
-          <a href="#" data-pane="left" data-target="reeksen">REEKSEN</a>
-          <a href="#" data-pane="left" data-target="genres">GENRES</a>
-          <a href="#" data-pane="left" data-target="auteurs">AUTEURS</a>
+	  {{ range $name, $taxonomy := .Site.Taxonomies }}
+
+	  <a href="#" data-pane="left" data-target="{{ $name }}">{{ upper $name }}</a>
+	  {{ end }}
+
+
           <a class="menu-search" href="#" data-pane="left" data-target="zoeken">ZOEKEN</a>
           <a href="#" data-pane="left" data-target="aA">aA</a>
           <a class="mobile-only" href="#" data-pane="right" data-target="over">Over SKUT</a>
