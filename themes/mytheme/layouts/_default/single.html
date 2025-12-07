@@ -1,9 +1,9 @@
 {{ define "main" }}
-<h2>{{ .Title }}</h2>
-<p>{{ time.Format "Januari 2, 2006" .PublishDate }}</p>
+<h2 class="title">{{ .Title }}</h2>
+<p class="meta">{{ time.Format "Januari 2, 2006" .PublishDate }}</p>
 {{ if .Params.Tags }}
 {{ partial "tags.html" . }}
 {{ end }}
-<div>{{ .Content }}</div>
+<div class="content">{{ .Content }}</div>
 {{ end }}
 
