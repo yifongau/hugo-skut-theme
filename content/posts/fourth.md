@@ -3,9 +3,9 @@ date = '2025-11-03T13:24:44+01:00'
 draft = true
 title = 'Second Jantje'
 tags = ["foo", "bar"]
-reeks = 'reeks 2'
-genre = 'verhaal'
-auteur = 'Jantje Knul'
+reeksen = 'reeks 2'
+genres = 'verhaal'
+auteurs = 'Jantje Knul'
 +++
 
 <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Taciti augue tristique varius porta mi. Curae et commodo proin aliquam vitae magna morbi lacinia metus condimentum tristique sagittis.</div>

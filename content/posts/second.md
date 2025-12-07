@@ -3,9 +3,9 @@ date = '2025-11-03T13:24:44+01:00'
 draft = true
 title = 'Second Martinus'
 tags = ["foo", "bar"]
-reeks = 'reeks 1'
-genre = 'poëzie'
-auteur = 'Martinus Nijhoff'
+reeksen = 'reeks 1'
+genres = 'poëzie'
+auteurs = 'Martinus Nijhoff'
 +++
 
 <div>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Taciti augue tristique varius porta mi. Curae et commodo proin aliquam vitae magna morbi lacinia metus condimentum tristique sagittis.</div>

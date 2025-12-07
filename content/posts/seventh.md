@@ -2,8 +2,8 @@
 date = '2025-11-03T13:24:44+01:00'
 draft = true
 title = 'Kettingbrief twee auteurs'
-genre = 'kettingbrief'
-auteur = ["Ronja de Rover", "Martinus Nijhoff"]
+genres = 'kettingbrief'
+auteurs = ["Ronja de Rover", "Martinus Nijhoff"]
 +++
 
 <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Taciti augue tristique varius porta mi. Curae et commodo proin aliquam vitae magna morbi lacinia metus condimentum tristique sagittis.</div>
