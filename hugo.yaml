@@ -6,3 +6,23 @@ taxonomies:
   reeks: reeksen
   genre: genres
   auteur: auteurs
+outputs:
+  home:
+  - html
+  - rss
+  page:
+  - json
+  - html
+# - epub
+# - pdf
+  rss:
+  - rss
+  section:
+  - json
+  - rss
+  taxonomy:
+  - json
+  - rss
+  term:
+  - json
+  - rss

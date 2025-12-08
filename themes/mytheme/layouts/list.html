@@ -1,9 +1,0 @@
-{{ define "main" }}
-<p> test<p>
-<ul>
-{{ range .Pages.ByPublishDate.Reverse }}
-	{{- partial "listitem.html" . -}}
-{{ end }}
-</ul>
-{{ end }}
-
