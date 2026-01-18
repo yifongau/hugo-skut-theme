@@ -1,28 +1,18 @@
-baseURL: 'https://example.org/'
-languageCode: 'en-us'
-title: 'My New Hugo Site'
-theme: 'mytheme'
+baseURL: 'https://tijdschriftskut.nl'
+languageCode: 'nl-nl'
+title: 'Tijdschrift SKUT'
+#theme: 'mytheme'
 taxonomies:
+  nieuws: nieuws
   reeks: reeksen
   genre: genres
   auteur: auteurs
 outputs:
   home:
   - html
-  - rss
+  section:
   page:
   - json
-  - html
-# - epub
-# - pdf
-  rss:
-  - rss
-  section:
-  - json
-  - rss
   taxonomy:
-  - json
-  - rss
   term:
   - json
-  - rss
