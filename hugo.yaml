@@ -3,16 +3,19 @@ languageCode: 'nl-nl'
 title: 'Tijdschrift SKUT'
 #theme: 'mytheme'
 taxonomies:
-  nieuws: nieuws
+  redactioneel: redactioneel
   reeks: reeksen
   genre: genres
   auteur: auteurs
 outputs:
   home:
   - html
+  - json
   section:
+  - json
   page:
   - json
   taxonomy:
+  - json
   term:
   - json

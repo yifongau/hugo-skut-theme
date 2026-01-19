@@ -1,0 +1,27 @@
+{{- $pages := where .Site.Pages ".Kind" "eq" "page" }}
+{{- $publications := where $pages ".Type" "ne" "colofon" }}
+{{- $notLast := sub $publications.Len 1 }}
+[
+{{- range first $notLast $publications }}
+	{
+	    "title": "{{ .Title }}",
+	    "date": "{{ .Date }}",
+	    "type": "{{ .Type }}",
+	    "kind": "{{ .Kind }}",
+	    "reeksen": "{{ .Params.Reeksen }}",
+	    "genres": "{{ .Params.Genres }}",
+	    "auteurs": "{{ .Params.Auteurs }}"
+	},
+{{- end }}
+{{- range last 1 $publications }}
+	{
+	    "title": "{{ .Title }}",
+	    "date": "{{ .Date }}",
+	    "type": "{{ .Type }}",
+	    "kind": "{{ .Kind }}",
+	    "reeksen": "{{ .Params.Reeksen }}",
+	    "genres": "{{ .Params.Genres }}",
+	    "auteurs": "{{ .Params.Auteurs }}"
+	}
+{{- end }}
+]

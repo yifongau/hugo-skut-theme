@@ -1,0 +1,23 @@
+{{ $notLast := sub .Pages.Len 1 }}
+[
+{{- range first $notLast .Pages }}
+{
+    "title": "{{ .Title }}",
+    "date": "{{ .Date }}",
+    "type": "{{ .Type }}",
+    "reeksen": "{{ .Params.Reeksen }}",
+    "genres": "{{ .Params.Genres }}",
+    "auteurs": "{{ .Params.Auteurs }}"
+},
+{{- end }}
+{{- range last 1 .Pages }}
+{
+    "title": "{{ .Title }}",
+    "date": "{{ .Date }}",
+    "type": "{{ .Type }}",
+    "reeksen": "{{ .Params.Reeksen }}",
+    "genres": "{{ .Params.Genres }}",
+    "auteurs": "{{ .Params.Auteurs }}"
+}
+{{- end }}
+]
