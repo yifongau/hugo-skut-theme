@@ -1,138 +1,18 @@
+// De gehele executie van de code wordt omvat door window.onload.
+// Dit betekent dat de code pas draait
+// wanneer de hele webpagina, 
+// incluis afbeeldingen en stylesheets,
+// geladen is.
+//
+// Dit is nodig voor de correcte manipulatie van het DOM.
 window.onload = function () {
 
+
+// BEGINVARIABELEN
+	
     let leftVisible = false;
     let rightVisible = false;
-
-  
-    const titlesByKey = {
-      "Obe Alkema": [
-        {
-          title: "Cyclus III — de ratten",
-          meta: "Justine Armand de Court — 26 juli 2025",
-          tag: "Over Kees Ouwens",
-          img: "",
-          content: `<div class="artikel"><p class="artikeltekst">
-           Hey Frank,
-<br><br>
-Dat verwoord je treffend: poëzie tegen biopolitiek. Daar ben ik de afgelopen weken ook veel mee bezig geweest.
-<br><br>
-Het Ouwens-project lijkt me niet los te laten; het heeft zelfs wortel geschoten in een andere publicatie. Zo werkte ik de afgelopen weken aan een essay dat onderhand op Versopolis is verschenen, waarin ik op zoek ga naar de lichamelijke openingen (of potentialiteiten) in de gedichten van Ouwens. In het stuk beargumenteerde ik dat die beweging in zijn werk, als een queer houding kan worden gelezen. Hiermee doelde ik niet per se op queer als een seksualiteit – hoewel dit ook mogelijk is – maar eerder als een gevoel van afwijking, van datgene wat zich verzet tegen begrenzing. In de gedichten van Ouwens wordt constant ruimte overgelaten voor het lichaam om fouten te maken, waardoor het constant opnieuw kan worden uitgevonden en in elkaar gezet. In het essay bespreek ik bijvoorbeeld ‘Exil’ uit Klem. In mijn lezing wordt mannelijkheid niet voorgesteld als iets essentieels. In plaats daarvan wordt de veronderstelde stabiliteit van het woord ‘man’ kneedbaar gemaakt, in staat om door middel van taal te worden ontmanteld en opnieuw samengesteld.
-<br><br>
-Zoals jij ook stelt, wordt op het lichaam waarover Ouwens schrijft ingewerkt; het poreuze karakter van zijn subjecten wordt daardoor vatbaar voor verschillende invloeden. Of, zoals Marc Kregting in het stuk De verborgen derde persoon, uit overzichtswerk En gene schitterde op de rede, schrijft: “Het stereoptiep mannelijke en vrouwelijke lijken verruild. Laat ik zeggen dat Ouwens hermafroditische literatuur bedrijft.” Ik weet niet of ik Kregting in deze omschrijving volg – de terminologie die hij gebruikt is ook sterk verouderd – maar het sentiment deel ik wel, namelijk de meervoudigheid van het dichtwerk.
-<br><br>
-In het reflecteren op je brief dacht ik ook na over een term waar ik geen ruimte voor zag in mijn essay, en die ook nog geen ingang heeft gevonden in onze correspondentie. Ik meen dit te kunnen toeschrijven aan het feit dat we allebei weinig thuis zijn in het prozawerk van Ouwens, maar de term in kwestie lijkt me relevant voor datgene wat we proberen te ontginnen. Ik heb het namelijk over de term ‘retroseksualiteit’ die Ouwens actief gebruikte als betekenisgever in zijn (vrijwel ongelezen) prozawerk. Het is nogal een glibberig begrip – ook na research voel ik me met een kluitje het riet in gestuurd – maar een mogelijk antwoord vond ik in een bespreking van het verzameld werk in krant De Morgen: “De retroseksualiteit is geen geaardheid maar een goed recht, een correctie op de natuur (…) De retroseksuele wil keert terug naar de stand van zaken (…) zijn doel is behoud van vooruitzicht, het geborchte als de tijd van voor de gang van zaken, door de herhaling verzekerd (…) De consumptie, niet de consummatie is een eerste levensbehoefte. De retroseksueel leeft daarom niet in onthouding maar in het reine.”
-<br><br>
-Ook in het essay De realiteit van de fictie, uit hetzelfde eerder genoemde overzichtswerk, waar Ouwens uitvoerig wordt geïnterviewd door Toine Moerbeek, zegt hij het volgende over deze seksualiteitsopvatting:
-<br><br>
-Toine Moerbeek: “In Een twee drie vier introduceerde je de term ‘retroseksualiteit’. Ook toen splitste je je personages op in meerdere identiteiten. In je nieuwste boek stel je expliciet dat elke Ik twee Zelven heeft. Er is steeds een kant van het personage dat niet getoond kan worden, maar dat aangevuld moet worden met een alter ego. Wat voor het personage geldt, geldt ook voor de auteur, die immers via zijn personages iets van zichzelf toont. ‘Retro’ betekent ’terug’, ’terugwaarts’; ‘vade retro satanas’ staat er in de bijbel, ‘ga terug, Satan!’ Wil je de duivel uit jezelf uitdrijven?”
-<br><br>
-Kees Ouwens: “Retroseksualiteit – retour de la sexualité; een wending of keer maar een afdanking. Sexualiteit – ik neem het woord afkerig in de mond – is het een deugd? Vervang de x door ks, wat houd je over? Een versnapering: seks. De retroseksualiteit is dus niet een spaaklopen, slechts een vrijzwevend blijven, en bepaald een bestemming. (…) Anders gezegd: het eind is niet zoek, het houdt zich schuil in de aanvang.”
-Wanneer we nadenken over onze eigen tweeledigheden – in coördinaten en genealogieën – kan het bijna niet anders dan dat wij ook, op een bepaalde manier, ons een retroseksuele houding aanmeten: “zijn doel is behoud van vooruitzicht, het geborchte als de tijd van voor de gang van zaken, door de herhaling verzekerd.”
-<br><br>
-Wanneer ik lees dat je vraag naar herkomstigheid zich ook aan je opdringt in de vorm van een grondgelaagdheid, vind ik dit erg herkenbaar. Ik denk gelijk aan een een gedicht uit Mythologieën: “Ook ik, op de rand van de aardbreuk / in licht als een schaduw, / ver boven het rijk in de diepte, / wist dat ik het was, zoals zij beneden / mijn leeftijden als voorbije lichamen, / mij als hun overkant zagen”. Het constant afscheid nemen van wat voorbij is, maar bewust zijn van de ‘voorbije lichamen’ die, als een vervelende huid, achterblijven. De diepte, niet een plek om naar terug te keren – à la Het land van herkomst – maar als de herinnering aan de meervoudigheid die constant aan het zelf verbonden is.
-<br><br>
-Dit is iets wat ik zelf herken, en dit gevoel heb ik geprobeerd in het essay voor Versopolis te vangen. De vormen van groei, zoals Ouwens dat treffend omschrijft, openen mogelijkheden om verschillende erfenissen, intern en extern, te kunnen opgraven. In een ander gedicht (ook uit de bundel Mythologieën) komt dit helder naar voren: “Ik, beeldspraak, mijn gelijke, en hij / de mij sprekende, mijn vergelijker, komen / thuis, gaan naar buiten, komen de wijk / uit, stellen zonder ons kan het de zelfde / en hoor het lachen der symbolen”. Hierbij moet ik gelijk denken aan hoe het man-zijn wordt vormgegeven. Niet door wezenlijke (of essentialistische) eigenschappen, maar door verhalen van anderen, door beeldspraak. Deze vertaalslag mislukt echter altijd, waarop het “lachen der symbolen” volgt.
-<br><br>
-Jouw observatie dat “de verleden tijd hier [in de gedichten uit Klem] vooral als het vastzitten in het verleden, als de onmogelijkheid om te rouwen” moet worden gelezen, vind ik dan ook scherp en vooral ontroerend. Het lijkt me dat dit is wat Ouwens bedoelt, wanneer hij retroseksualiteit niet ziet als een vorm van spaaklopen – wat een hapering impliceert – maar als een vrijzwevend blijven. Niet volledig op de plaats van herkomst zijn, maar blijven waar er nog ruimte is voor verandering, voor ingrepen in de omgeving, of deze nu lichamelijk of maatschappelijk is.
-<br><br>
-Misschien is dat ook waarom ik bij Ouwens telkens een soort thuiskomst ervaar, hoe omwegachtig en meervoudig die ook is. Zijn poëzie lijkt zich steeds te bewegen tussen verlies en heruitvinding, tussen bron en ommuring, zoals jij dat zo mooi omschreef met je “grondgelaagdheid”.
-<br><br>
-Ik blijf benieuwd hoe jij dat ervaart: of die beweging voor jou ook voelt als een vrijzwevend blijven, of juist als een poging om toch ergens wortel te schieten.
-<br><br>
-Veel warms,<br>
-Lars</p></div>` 
-        },
-        {
-          title: "Over Kees Ouwens V",
-          meta: "Lars Meijer — 11 augustus 2025",
-          tag: "Over Kees Ouwens",
-          img: "",
-          content: `<div class="artikel"><p>
-
-            <img src="AnkePoem_1_Final_Cropped.png" width="440"> <br><br>
-            ik rook shag iets dat ik niet doe.<br>
-mijn naam een echo van moeders,<br>
-met een minnaar kan ik zijn zonder dat te weten,<br>
-een gedragen leegte boven mijn romp<br>
-<br>
-je legt me neer op een vloerkleed van paardenhaar.<br>
-we horen geen hartenklop, je pelt de huid<br>
-van mijn huid, gaat door tot ik overblijf<br><br>
-
-tot zichtbaar is mijn denkbare vruchtvlees.<br>
-wie kan mij raken nu ik bloot ben,<br>
-nu nachtlicht zijn schaduw werpt op hals en borsten<br>
-en een polsslag zich laat vinden.<br><br>
-
-ik werd schreeuwend geboren<br>
-ik hoef niet naar bloesem te ruiken, niet te glimlachen<br>
-om die andere lach te verbergen.<br><br>
-
-we praten niet, we praten<br>
-niet over wonden op knieën en rug<br>
-<br>
-vertellen wat er gebeurde.<br>
-<br>
-in het donker heeft de dag houvast<br>
-aan het bed: het delven kan<br>
-<br>
-beginnen mijn ogen aan de nacht<br>
-wereld ontvouwt zich als vanzelf aan het lichaam<br>
-<br>
-terug. ik ben de plek waar ik heen ga ik jeuk<br>
-als een wondje dat herstelt. wegblijven gaat<br>
-<br>
-moeilijk reik ik door het inwendige broedsel<br>
-van mijn leven, naar wat de dag in mij plantte<br>
-<br>
-bij licht, bij mens eindig ik. klopt mijn hart alleen<br>
-in mijn oor. zo drijf ik aan de oppervlakte<br>
-<br>
-een zalmkleurige olievlek<br>
-als een kannibaal begin ik te eten van de pijn<br>
-<br>
-<img src="AnkePoem_4_Final_Cropped.png" width="420">
-</p></div>`
-        },
-        {
-          title: "Laboria Cuboniks — Xenofeministisch Manifest: ZERO",
-          meta: "Lies Kelder (vert.) — 18 maart 2025",
-          tag: "Poëzie",
-          // img: "Screenshot 2025-08-16 at 14.38.48.png",
-          content: `<div class="artikel"><p>Gedicht / manifest-tekst. Je kunt ook regels <br> breken of afbeeldingen invoegen.</p></div>`
-        },
-        {
-          title: "Over Kees Ouwens III",
-          meta: "Lars Meijer — 19 juli 2025",
-          tag: "Over Kees Ouwens",
-          img: "",
-          content: `<div class="artikel"><p>Korte intro en daarna de volledige tekst…</p></div>`
-        },
-        {
-          title: "Over Kees Ouwens II",
-          meta: "Frank Keizer — 8 juli 2025",
-          tag: "Over Kees Ouwens",
-          img: "",
-          content: `<div class="artikel"><p>Volledige bijdrage van Frank Keizer.</p></div>`
-        },
-        {
-          title: "Over Kees Ouwens",
-          meta: "Lars Meijer — 27 juni 2025",
-          tag: "Over Kees Ouwens",
-          img: "",
-          content: `<div class="artikel"><p>De eerste in de reeks.</p></div>`
-        },
-        {
-          title: "Het is de hulpeloosheid die hen breekt",
-          meta: "Leon Kleinveld —  9 juni 2025",
-          tag: "Verhaal",
-          img: "",
-          content: `<div class="artikel"><p>Verhaaltekst…</p></div>`
-        }
-      ]
-    };
-
-    const searchIndex = buildSearchIndex(titlesByKey);
+//    const searchIndex = buildSearchIndex(titlesByKey);
     let lastTrackedList = [];
     let suppressRenderTracking = false;
     let searchActive = false;
@@ -145,6 +25,22 @@ als een kannibaal begin ik te eten van de pijn<br>
       return `${prefix}-${Date.now()}-${uidCounter}`;
     }
 
+	fetchTitles()
+
+
+// DEFINIEER FUNCTIES HIER
+	
+	async function fetchTitles() {
+		const initFetch = await fetch('index.json')
+		
+		if (!initFetch.ok) {
+			throw new Error(`HTTP error! Status: ${response.status}`);
+	}
+
+		const initJSON = await initFetch.json();
+		renderTitles(initJSON);
+
+	}
    
     function renderTitles(list) {
       const container = document.getElementById('titles');
@@ -168,7 +64,7 @@ als een kannibaal begin ik te eten van de pijn<br>
 
        
         el.innerHTML = `
-          ${item.tag ? `<div class="meta">${item.tag}</div>` : ''}
+          ${item.reeksen ? `<div class="meta">${item.reeksen}</div>` : ''}
           <h3 class="title">
             <button type="button"
                     class="title-toggle"
@@ -177,7 +73,7 @@ als een kannibaal begin ik te eten van de pijn<br>
               ${item.title}
             </button>
           </h3>
-          ${item.meta ? `<div class="kicker">${item.meta}</div>` : ''}
+          ${item.auteurs ? `<div class="kicker">${item.auteurs}</div>` : ''}
           ${item.img ? `<img class="titleimg" src="${item.img}" alt="">` : ''}
 
           <div id="${contentId}" class="content" hidden>
@@ -194,6 +90,7 @@ als een kannibaal begin ik te eten van de pijn<br>
         container.appendChild(empty);
       }
     }
+
 
     function buildSearchIndex(map) {
       const entries = [];
