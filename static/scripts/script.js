@@ -8,7 +8,7 @@
 window.onload = function () {
 
 
-// BEGINVARIABELEN
+// BEGINWAARDEN VAN GLOBALE VARIABELEN
 	
     let leftVisible = false;
     let rightVisible = false;
@@ -24,24 +24,50 @@ window.onload = function () {
       uidCounter += 1;
       return `${prefix}-${Date.now()}-${uidCounter}`;
     }
+ 
+  // ASYNCHROON: PARALLEL VS. IN SEQUENTIE
+  // Na het laden van de gehele pagina 
+  // begint de javascript met een asynchrone fetchTitles(),
+  // waarin een json-bestand wordt opgehaald van de SKUT-webhost.
+  //
+  // Het is belangrijk hier om te onderscheiden
+  // welke zaken afhankelijk en welke zaken onafhankelijk zijn
+  // van het antwoord op fetchTitles().
+  //
+  // Je zou een asynchrone functie kunnen zien als een functie
+  // die een deel van het programma afsplitst 
+  // en blootstelt aan de buitenwereld,
+  // en alleen dat deel afhankelijk maakt van de externe wereld.
+  //
+  // Normaliter heeft een programma geen afhankelijkheden van de wereld,
+  // en kan diens voortgang geïsoleerd verlopen van de wereld.
+  //
+  // In een asynchrone functie zit een aanroep van de externe wereld,
+  // die buiten de controle van het programma ligt.
+  // Daarmee wordt de tijd van het programma verstrengeld
+  // met de tijd van de wereld.
+  //
+  // Binnen die functie plaats je alle zaken 
+  // die afhankelijk moeten zijn
+  // van een gespecificeerde gebeurtenis.
+  // D.w.z. moeten weten van het wel en wee
+  // van de gebeurtenis.
 
-	fetchTitles()
+  fetchTitles()
 
+  // CONTENT-FUNCTIES
+    async function fetchTitles() {
+      const initFetch = await fetch('index.json')
+      
+      if (!initFetch.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+    }
 
-// DEFINIEER FUNCTIES HIER
-	
-	async function fetchTitles() {
-		const initFetch = await fetch('index.json')
-		
-		if (!initFetch.ok) {
-			throw new Error(`HTTP error! Status: ${response.status}`);
-	}
+      const initJSON = await initFetch.json();
+      renderTitles(initJSON);
 
-		const initJSON = await initFetch.json();
-		renderTitles(initJSON);
-
-	}
-   
+    }
+      
     function renderTitles(list) {
       const container = document.getElementById('titles');
       if (!container) return;
@@ -62,7 +88,7 @@ window.onload = function () {
         el.className = 'block';
         el.setAttribute('data-article-id', articleId);
 
-       
+        // hier wordt het format van het titel-item bepaald 
         el.innerHTML = `
           ${item.reeksen ? `<div class="meta">${item.reeksen}</div>` : ''}
           <h3 class="title">
@@ -82,7 +108,7 @@ window.onload = function () {
         `;
         container.appendChild(el);
       });
-
+      
       if (!items || items.length === 0) {
         const empty = document.createElement('div');
         empty.className = 'block';
@@ -91,7 +117,7 @@ window.onload = function () {
       }
     }
 
-
+    // TODO: Vervangen door hugo search library
     function buildSearchIndex(map) {
       const entries = [];
       Object.entries(map || {}).forEach(([key, items]) => {
@@ -113,6 +139,7 @@ window.onload = function () {
       return entries;
     }
 
+    // NUTSFUNCTIES
     function stripHTML(value) {
       return (value || '')
         .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, ' ')
@@ -130,6 +157,7 @@ window.onload = function () {
         .toLowerCase();
     }
 
+    // TODO: Vervangen door hugo search library
     function combineSearchTag(key, tag) {
       const cleanKey = (key || '').trim();
       const cleanTag = (tag || '').trim();
@@ -158,9 +186,10 @@ window.onload = function () {
       }
     });
 
+    // NAVIGATIE-FUNCTIES
     function expand(el) {
-  const article = el.closest('.block');
-  article?.classList.add('open');
+      const article = el.closest('.block');
+      article?.classList.add('open');
       if (!el) return;
       el.hidden = false;
       el.style.maxHeight = '0px';
@@ -178,8 +207,8 @@ window.onload = function () {
     }
 
     function collapse(el) {
-  const article = el.closest('.block');
-  article?.classList.remove('open');
+      const article = el.closest('.block');
+      article?.classList.remove('open');
       if (!el) return;
       el.style.transition = '';
       el.style.maxHeight = el.scrollHeight + 'px';
@@ -287,8 +316,10 @@ const ACCESSIBILITY_STORAGE_KEY = 'skut-accessibility-preferences';
 const defaultAccessibilityState = { contrast: false, fontScale: 0 };
 let accessibilityState = loadAccessibilityState();
 
+// TOEGANKELIJKHEIDSFUNCTIES
 function loadAccessibilityState() {
   try {
+    // TODO: Controleer of cookiebanner nodig is bij dit gebruik van localStorage
     const raw = localStorage.getItem(ACCESSIBILITY_STORAGE_KEY);
     if (!raw) return { ...defaultAccessibilityState };
     const parsed = JSON.parse(raw);
@@ -386,6 +417,8 @@ fontButtons.forEach(btn => {
 
 applyAccessibilityState();
 
+// ZOEKFORMULIER-FUNCTIES
+// TODO: Aanpassen naar hugo search library
 function resetSearchForm() {
   suppressSearchInputSync = true;
   searchInputs.forEach(input => {
@@ -459,12 +492,14 @@ function setMobileSearch(open, options = {}) {
   updateHeaderOffsetVar();
 }
 
+// CONTENT-FUNCTIE?
 function updateLeftMenuSelection(linkToSelect) {
   document.querySelectorAll('.menu-left .menu a').forEach(link => {
     link.setAttribute('aria-selected', String(link === linkToSelect));
   });
 }
 
+// ZOEKFUNCTIE
 function performSearch(rawQuery, options = {}, sourceInput = null) {
   const query = (rawQuery || '').toString();
   const trimmed = query.trim();
@@ -553,6 +588,7 @@ function performSearch(rawQuery, options = {}, sourceInput = null) {
   searchActive = true;
 }
 
+// ZOEKEN: voeg eventlisteners toe aan alle zoekformulieren
 searchForms.forEach(form => {
   const input = form.querySelector('[data-search-input]');
   if (!input) return;
@@ -572,6 +608,7 @@ searchForms.forEach(form => {
   });
 });
 
+// LAYOUT- EN UITERLIJK
 let backdropEl = null;     
 let lastMobile = isMobile();
 let mobileMenuOpen = false;
@@ -784,6 +821,7 @@ function closeAll() {
   setMobileSearch(false, { focus: false, skipMenuSync: true });
 }
 
+// EVENTLISTENERS
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && isMobile() && (leftVisible || rightVisible || mobileMenuOpen || mobileSearchOpen)) {
     e.preventDefault();
@@ -922,7 +960,8 @@ setMobileMenu(false);
       setMobileMenu(false);
     });
 
-   
+  
+    // TODO: Herschrijf initfunctie
     (function init(){
       const leftActive  = document.querySelector('.menu-left  a[aria-selected="true"]')?.dataset.target || 'auteurs';
       const rightActive = document.querySelector('.menu-right a[aria-selected="true"]')?.dataset.target || 'over';
@@ -944,6 +983,9 @@ setMobileMenu(false);
 
       renderTitles(titlesByKey["Obe Alkema"] || []);
     })();
+
+
+// SCROLL-FUNCTIES
 function isReadingMode() {
   const grid = document.getElementById('grid');
   const articleOpen = document.querySelector('.middle .block.open');
