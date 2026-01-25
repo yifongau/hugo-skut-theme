@@ -38,20 +38,23 @@ window.onload = function () {
   // die een deel van het programma afsplitst 
   // en blootstelt aan de buitenwereld,
   // en alleen dat deel afhankelijk maakt van de externe wereld.
-  //
+  
   // Normaliter heeft een programma geen afhankelijkheden van de wereld,
   // en kan diens voortgang geïsoleerd verlopen van de wereld.
   //
   // In een asynchrone functie zit een aanroep van de externe wereld,
   // die buiten de controle van het programma ligt.
-  // Daarmee wordt de tijd van het programma verstrengeld
+  // Daarmee wordt de tijd van een deel van het programma verstrengeld
   // met de tijd van de wereld.
   //
-  // Binnen die functie plaats je alle zaken 
+  // Binnen de asynchrone functie plaats je alle zaken 
   // die afhankelijk moeten zijn
   // van een gespecificeerde gebeurtenis.
   // D.w.z. moeten weten van het wel en wee
   // van de gebeurtenis.
+  //
+  // Met elke asynchrone functie ontstaat er een nieuwe splitsing
+  // in de tijd van het programma. 
 
   fetchTitles()
 
