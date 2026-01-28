@@ -26,14 +26,6 @@ window.onload = function () {
     }
  
   // ASYNCHROON: PARALLEL VS. IN SEQUENTIE
-  // Na het laden van de gehele pagina 
-  // begint de javascript met een asynchrone fetchTitles(),
-  // waarin een json-bestand wordt opgehaald van de SKUT-webhost.
-  //
-  // Het is belangrijk hier om te onderscheiden
-  // welke zaken afhankelijk en welke zaken onafhankelijk zijn
-  // van het antwoord op fetchTitles().
-  //
   // Je zou een asynchrone functie kunnen zien als een functie
   // die een deel van het programma afsplitst 
   // en blootstelt aan de buitenwereld,
@@ -52,11 +44,8 @@ window.onload = function () {
   // van een gespecificeerde gebeurtenis.
   // D.w.z. moeten weten van het wel en wee
   // van de gebeurtenis.
-  //
-  // Met elke asynchrone functie ontstaat er een nieuwe splitsing
-  // in de tijd van het programma. 
 
-  fetchTitles()
+  checkInitFetch()
 
   // CONTENT-FUNCTIES
     async function checkInitFetch() {
@@ -64,18 +53,18 @@ window.onload = function () {
 
       if (!window.location.hash) {
 
-        const indexFetch = await fetch('index.json');
+        const initFetch = await fetch('index.json');
 
-        if (!indexFetch.ok) {
+        if (!initFetch.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
-        const indexJSON = await indexFetch.json();
-        renderTitles(indexJSON);
+        const initJSON = await initFetch.json();
+        renderTitles(initJSON);
 
       } 
     }
-      
+
     function renderTitles(list) {
 
       // sanity checks
@@ -88,22 +77,49 @@ window.onload = function () {
         searchActive = false;
       }
 
+    // define function inside function
+      async function loadBody(contentId, jsonPath) {
+          console.log(`Retrieved ${jsonPath} for ${contentId}`)
+
+          const fetched = await fetch(jsonPath);
+
+          if (!fetched.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+
+          const fetchedJSON = await fetched.json();
+
+          const el = document.getElementById(contentId);
+          el.innerHTML = fetchedJSON.body
+
+      }
+      
+      
+
       container.innerHTML = '';
 
       items.forEach(item => {
         const articleId = uid('art');
         const contentId = uid('content');
+        const btnId = uid('btn');
 
         const el = document.createElement('article');
         el.className = 'block';
         el.setAttribute('data-article-id', articleId);
 
         // hier wordt het format van het titel-item bepaald 
+      
+        const isNull = "<no value>" 
         el.innerHTML = `
-          ${item.reeksen ? `<div class="meta">${item.reeksen}</div>` : ''}
+
+          ${ (item.reeksen != isNull) && (item.genres != isNull) ? `<div class="meta">${item.reeksen}, ${item.genres}</div>` 
+            : (item.genres != isNull) ? `<div class="meta">${item.genres}</div>` 
+            : '' }
+
           <h3 class="title">
             <button type="button"
                     class="title-toggle"
+                    id="${btnId}"
                     aria-expanded="false"
                     aria-controls="${contentId}">
               ${item.title}
@@ -113,10 +129,15 @@ window.onload = function () {
           ${item.img ? `<img class="titleimg" src="${item.img}" alt="">` : ''}
 
           <div id="${contentId}" class="content" hidden>
-            ${item.content ? item.content : ''}
           </div>
         `;
         container.appendChild(el);
+        
+        // add event listener to title button for loading body on click
+        const btn = document.getElementById(btnId)
+        btn.addEventListener("click", function() {
+          loadBody(contentId, "publicatie/fourth/index.json");
+        });
       });
       
       if (!items || items.length === 0) {
