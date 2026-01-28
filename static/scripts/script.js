@@ -59,19 +59,26 @@ window.onload = function () {
   fetchTitles()
 
   // CONTENT-FUNCTIES
-    async function fetchTitles() {
-      const initFetch = await fetch('index.json')
-      
-      if (!initFetch.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-    }
+    async function checkInitFetch() {
 
-      const initJSON = await initFetch.json();
-      renderTitles(initJSON);
 
+      if (!window.location.hash) {
+
+        const indexFetch = await fetch('index.json');
+
+        if (!indexFetch.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const indexJSON = await indexFetch.json();
+        renderTitles(indexJSON);
+
+      } 
     }
       
     function renderTitles(list) {
+
+      // sanity checks
       const container = document.getElementById('titles');
       if (!container) return;
 
