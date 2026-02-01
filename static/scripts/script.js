@@ -25,13 +25,14 @@ window.onload = function () {
       return `${prefix}-${Date.now()}-${uidCounter}`;
     }
  
-  checkInitFetch()
+    if (!window.location.hash) {
+      homeFetch()
+    }
 
   // CONTENT-FUNCTIES
-    async function checkInitFetch() {
-
-
-      if (!window.location.hash) {
+  //
+    // Fetch the big index.json with all the publications
+    async function homeFetch() {
 
         const initFetch = await fetch('json/index.json');
 
@@ -41,9 +42,10 @@ window.onload = function () {
         const initJSON = await initFetch.json();
         renderTitles(initJSON);
 
-      } 
     }
 
+    // Iterate over list and generate list items,
+    // along with event listeners to load body on click.
     function renderTitles(list) {
 
       // sanity checks
@@ -55,24 +57,6 @@ window.onload = function () {
         lastTrackedList = items;
         searchActive = false;
       }
-
-    // define function inside function
-      async function loadBody(contentId, jsonPath) {
-          console.log(`Retrieved ${jsonPath} for ${contentId}`)
-
-          const bodyFetch = await fetch(jsonPath);
-
-          if (!bodyFetch.ok) {
-            throw new Error(`HTTP error! Status: ${bodyFetch.status}`);
-          }
-
-          const fetchedTxt = await bodyFetch.text();
-          const el = document.getElementById(contentId);
-          el.innerHTML = fetchedTxt
-
-      }
-      
-      
 
       container.innerHTML = '';
 
@@ -90,8 +74,8 @@ window.onload = function () {
         const isNull = "<no value>" 
         el.innerHTML = `
 
-          ${ (item.reeksen != isNull) && (item.genres != isNull) ? `<div class="meta">${item.reeksen}, ${item.genres}</div>` 
-            : (item.genres != isNull) ? `<div class="meta">${item.genres}</div>` 
+          ${ (item.reeksen != isNull) && (item.genres != isNull) ? `<div class="meta">${termHtml(item.reeksen)}, ${termHtml(item.genres)}</div>` 
+            : (item.genres != isNull) ? `<div class="meta">${termHtml(item.genres)}</div>` 
             : '' }
 
           <h3 class="title">
@@ -103,18 +87,44 @@ window.onload = function () {
               ${item.title}
             </button>
           </h3>
-          ${item.auteurs ? `<div class="kicker">${item.auteurs}</div>` : ''}
+          ${item.auteurs ? `<div class="kicker">${termHtml(item.auteurs)}</div>` : ''}
           ${item.img ? `<img class="titleimg" src="${item.img}" alt="">` : ''}
 
           <div id="${contentId}" class="content" hidden>
           </div>
         `;
         container.appendChild(el);
+
+      function termHtml(arr) {
+            let hrefString
+        if (Array.isArray(arr)) {
+          for (i in arr) { 
+            if (i == 0 ) {
+              console.log(arr[i])
+              hrefString = `<a href="https://url123.com">${arr[i]}</a>`
+            } else if (i != 0 && i < arr.length - 1  ) {
+              console.log(arr[i])
+              hrefString = hrefString + `, <a href="https://url123.com">${arr[i]}</a>`
+            } else if (i == arr.length - 1 ) {
+              console.log(arr[i])
+              hrefString = hrefString + `, <a href="https://url123.com">${arr[i]}</a>`
+            }
+            
+          }
+        } else { 
+            hrefString = `<a href="https://url1.com">${arr}</a>`
+        }
+
+        return hrefString
+
+      }
         
         // add event listener to title button for loading body on click
         const btn = document.getElementById(btnId)
         btn.addEventListener("click", function() {
-          loadBody(contentId, "body/publicatie-md/fourth.txt");
+
+          let isEmpty = document.getElementById(contentId).innerHTML == false;
+          isEmpty ? loadBody(contentId, item.path) : console.log("Already loaded");
         });
       });
       
@@ -125,6 +135,24 @@ window.onload = function () {
         container.appendChild(empty);
       }
     }
+
+    async function loadBody(contentId, path) {
+        console.log(`Retrieved ${path} for ${contentId}`)
+
+        const bodyFetch = await fetch(path);
+
+        if (!bodyFetch.ok) {
+        throw new Error(`HTTP error! Status: ${bodyFetch.status}`);
+        }
+
+        const fetchedTxt = await bodyFetch.text();
+        const el = document.getElementById(contentId);
+        el.innerHTML = fetchedTxt
+
+    }
+      
+      
+
 
     // TODO: Vervangen door hugo search library
     function buildSearchIndex(map) {

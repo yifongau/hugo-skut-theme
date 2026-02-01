@@ -3,7 +3,7 @@ date = '2025-11-03T13:24:44+01:00'
 draft = true
 title = 'Kettingbrief twee auteurs'
 redactioneel = 'aankondiging'
-auteurs = ["Ronja de Rover", "Martinus Nijhoff"]
+auteurs = ["Ronja de Rover", "Martinus Nijhoff", "jantje jan", "humor koos", "klara zetter"]
 +++
 
 <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Taciti augue tristique varius porta mi. Curae et commodo proin aliquam vitae magna morbi lacinia metus condimentum tristique sagittis.</div>

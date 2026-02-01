@@ -3,6 +3,7 @@
 {{- range first $notLast .Pages }}
 {
     "title": "{{ .Title }}",
+    "path": "{{ .RelPermalink }}",
     "date": "{{ .Date }}",
     "type": "{{ .Type }}",
     "reeksen": "{{ .Params.Reeksen }}",
@@ -13,6 +14,7 @@
 {{- range last 1 .Pages }}
 {
     "title": "{{ .Title }}",
+    "path": "{{ .RelPermalink }}",
     "date": "{{ .Date }}",
     "type": "{{ .Type }}",
     "reeksen": "{{ .Params.Reeksen }}",

@@ -5,23 +5,23 @@
 {{- range first $notLast $publications }}
 	{
 	    "title": "{{ .Title }}",
-      "path":  "{{ .Path }}",
+      "path": "{{ .RelPermalink }}",
 	    "date": "{{ .Date }}",
 	    "type": "{{ .Type }}",
 	    "reeksen": "{{ .Params.Reeksen }}",
 	    "genres": "{{ .Params.Genres }}",
-	    "auteurs": "{{ .Params.Auteurs }}"
+	    "auteurs": {{ .Params.Auteurs | jsonify }}
 	},
 {{- end }}
 {{- range last 1 $publications }}
 	{
 	    "title": "{{ .Title }}",
-      "path":  "{{ . }}",
+      "path": "{{ .RelPermalink }}",
 	    "date": "{{ .Date }}",
 	    "type": "{{ .Type }}",
 	    "reeksen": "{{ .Params.Reeksen }}",
 	    "genres": "{{ .Params.Genres }}",
-	    "auteurs": "{{ .Params.Auteurs }}"
+	    "auteurs": {{ .Params.Auteurs | jsonify }}
 	}
 {{- end }}
 ]

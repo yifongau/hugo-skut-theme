@@ -4,6 +4,7 @@
 {
     "title": "{{ .Title }}",
     "date": "{{ .Date }}",
+    "path": "{{ .RelPermalink }}",
     "type": "{{ .Type }}",
     "reeksen": "{{ .Params.Reeksen }}",
     "genres": "{{ .Params.Genres }}",
@@ -14,6 +15,7 @@
 {
     "title": "{{ .Title }}",
     "date": "{{ .Date }}",
+    "path": "{{ .RelPermalink }}",
     "type": "{{ .Type }}",
     "reeksen": "{{ .Params.Reeksen }}",
     "genres": "{{ .Params.Genres }}",
