@@ -1,9 +1,0 @@
-{
-    "title": "{{ .Title }}",
-    "date": "{{ .Date }}",
-    "type": "{{ .Type }}",
-    "reeksen": "{{ .Params.Reeksen }}",
-    "genres": "{{ .Params.Genres }}",
-    "auteurs": "{{ .Params.Auteurs }}",
-    "body" : "{{ .Content }}"
-}

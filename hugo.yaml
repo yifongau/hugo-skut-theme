@@ -1,12 +1,24 @@
 baseURL: 'https://tijdschriftskut.nl'
 languageCode: 'nl-nl'
 title: 'Tijdschrift SKUT'
+uglyURLs: true
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
 #theme: 'mytheme'
 taxonomies:
   redactioneel: redactioneel
   reeks: reeksen
   genre: genres
   auteur: auteurs
+
+outputFormats:
+  json:
+    path: json
+  body:
+    mediaType: text/plain
+    path: body
 outputs:
   home:
   - html
@@ -14,8 +26,8 @@ outputs:
   section:
   - json
   page:
-  - json
+  - body
   taxonomy:
-  - json
+#  - json
   term:
   - json

@@ -25,26 +25,6 @@ window.onload = function () {
       return `${prefix}-${Date.now()}-${uidCounter}`;
     }
  
-  // ASYNCHROON: PARALLEL VS. IN SEQUENTIE
-  // Je zou een asynchrone functie kunnen zien als een functie
-  // die een deel van het programma afsplitst 
-  // en blootstelt aan de buitenwereld,
-  // en alleen dat deel afhankelijk maakt van de externe wereld.
-  
-  // Normaliter heeft een programma geen afhankelijkheden van de wereld,
-  // en kan diens voortgang geïsoleerd verlopen van de wereld.
-  //
-  // In een asynchrone functie zit een aanroep van de externe wereld,
-  // die buiten de controle van het programma ligt.
-  // Daarmee wordt de tijd van een deel van het programma verstrengeld
-  // met de tijd van de wereld.
-  //
-  // Binnen de asynchrone functie plaats je alle zaken 
-  // die afhankelijk moeten zijn
-  // van een gespecificeerde gebeurtenis.
-  // D.w.z. moeten weten van het wel en wee
-  // van de gebeurtenis.
-
   checkInitFetch()
 
   // CONTENT-FUNCTIES
@@ -53,12 +33,11 @@ window.onload = function () {
 
       if (!window.location.hash) {
 
-        const initFetch = await fetch('index.json');
+        const initFetch = await fetch('json/index.json');
 
         if (!initFetch.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
+          throw new Error(`HTTP error! Status: ${initFetch.status}`);
         }
-
         const initJSON = await initFetch.json();
         renderTitles(initJSON);
 
@@ -81,16 +60,15 @@ window.onload = function () {
       async function loadBody(contentId, jsonPath) {
           console.log(`Retrieved ${jsonPath} for ${contentId}`)
 
-          const fetched = await fetch(jsonPath);
+          const bodyFetch = await fetch(jsonPath);
 
-          if (!fetched.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
+          if (!bodyFetch.ok) {
+            throw new Error(`HTTP error! Status: ${bodyFetch.status}`);
           }
 
-          const fetchedJSON = await fetched.json();
-
+          const fetchedTxt = await bodyFetch.text();
           const el = document.getElementById(contentId);
-          el.innerHTML = fetchedJSON.body
+          el.innerHTML = fetchedTxt
 
       }
       
@@ -136,7 +114,7 @@ window.onload = function () {
         // add event listener to title button for loading body on click
         const btn = document.getElementById(btnId)
         btn.addEventListener("click", function() {
-          loadBody(contentId, "publicatie/fourth/index.json");
+          loadBody(contentId, "body/publicatie-md/fourth.txt");
         });
       });
       

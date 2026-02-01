@@ -5,9 +5,9 @@
 {{- range first $notLast $publications }}
 	{
 	    "title": "{{ .Title }}",
+      "path":  "{{ .Path }}",
 	    "date": "{{ .Date }}",
 	    "type": "{{ .Type }}",
-	    "kind": "{{ .Kind }}",
 	    "reeksen": "{{ .Params.Reeksen }}",
 	    "genres": "{{ .Params.Genres }}",
 	    "auteurs": "{{ .Params.Auteurs }}"
@@ -16,9 +16,9 @@
 {{- range last 1 $publications }}
 	{
 	    "title": "{{ .Title }}",
+      "path":  "{{ . }}",
 	    "date": "{{ .Date }}",
 	    "type": "{{ .Type }}",
-	    "kind": "{{ .Kind }}",
 	    "reeksen": "{{ .Params.Reeksen }}",
 	    "genres": "{{ .Params.Genres }}",
 	    "auteurs": "{{ .Params.Auteurs }}"
